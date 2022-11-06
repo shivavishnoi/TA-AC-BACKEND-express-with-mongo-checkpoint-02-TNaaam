@@ -25,7 +25,7 @@ Create an event management website using express & mongoDB where users visiting 
 
 8. Each remark can have fields
 
-- title
+- text
 - author
 - timestamps
 - likes(default -> 0)

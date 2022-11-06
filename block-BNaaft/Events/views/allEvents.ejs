@@ -1,0 +1,50 @@
+<%- include('partials/header.ejs') %>
+<main class="flex space-between align-items">
+  <section class="cards">
+    <!-- <article class="flex">
+      <a href="">
+        <img src="/images/e_img.png" alt="event image">
+      </a>
+      <div class="cards-text">
+        <a href="">
+          <h2>Event Name</h2>
+        </a>
+        <p><span>Location: - </span> Location </p>
+        <p><span>Host: - </span> Host Name </p>
+        <span>0 person</span>
+        <button>Intrested 🌟</button>
+      </div>
+    </article> -->
+    <% events.forEach((event)=>{ %>
+    <article class="flex">
+      <a href="/events/<%= event.id %>">
+        <img src="/images/e_img.png" alt="event image">
+      </a>
+      <div class="cards-text">
+        <a href="/events/<%= event.id %>">
+          <h2><%= event.title %></h2>
+        </a>
+        <p>Location - <%= event.location %></p>
+        <p>Starts On - <%= event.startDate %></p>
+        <span><%= event.likes %> person are </span>
+        <a href="/events/<%= event.id %>/like"><button>Intrested 🌟</button></a>
+      </div>
+    </article>
+    <% }) %>
+  </section>
+  <section class=" filters">
+    <h3>Filters By</h3>
+    <ul>
+      <li>
+        <a href="/events/all">All Events</a>
+      </li>
+      <li>
+        <a href="/events/latest">Latest Events</a>
+      </li>
+      <li>
+        <a href="/events/location">Location</a>
+      </li>
+    </ul>
+  </section>
+</main>
+<%- include('partials/footer.ejs') %>
