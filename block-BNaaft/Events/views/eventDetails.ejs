@@ -1,0 +1,58 @@
+<%- include('partials/header.ejs') %>
+<main>
+  <section class="details">
+    <a href="/events/all">⬅️</a>
+    <h2><%= event.title %></h2>
+    <p><%= event.summary %></p>
+    <h4>Event Details :-</h4>
+    <span>Start Date: <%= event.startDate %></span>
+    <span>End Date: <%= event.endDate %></span>
+    <span>Tagged as: <%= event.category %></span>
+    <span>Location: <%= event.location %></span>
+    <span>Host: <%= event.host %></span>
+    <span><%= event.likes %> people are Interested </span>
+    <a href="/events/<%= event.id %>/like"><button>Intrested 🌟</button></a>
+    </div>
+    <a href="/events/<%= event.id %>/edit"><button> Edit</button></a>
+    <a href="/events/<%= event.id %>/delete"><button> Delete</button></a>
+    </div>
+  </section>
+  <section class="comments">Add Comment:-
+
+    <div class="add">
+      <form action="/comments/<%= event.id %>" method="POST">
+        <textarea name="text" id="com" cols="30" rows="5" placeholder="Write your feedback here.."></textarea>
+        <input type="text" name="author" placeholder="Your Name">
+        <button type="submit">Comment</button>
+      </form>
+    </div>
+    <hr>
+    All Comments:-
+    <div class="comment-d">
+      <% event.comments.forEach((comment)=>{ %>
+      <p><%= comment.text %></p>
+      <span>By- <%= comment.author %>, </span>
+      <span>Likes: - <%= comment.likes %></span>
+      <br><br>
+      <div>
+        <a href="/comments/likes/<%= comment.id %>">Like</a>
+        <a href="/comments/edit/<%= comment.id %>">Edit</a>
+        <a href="/comments/delete/<%= comment.id %>">Delete</a>
+      </div>
+      <hr>
+      <% }) %>
+      <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique architecto non doloremque. Provident ullam doloremque rerum iure odio, temporibus cupiditate sequi rem fugiat. Necessitatibus, ullam.</p>
+      <span>By- Shivaji vishnoi, </span>
+      <span>Likes: - 10</span>
+      <br><br>
+      <div>
+
+        <a href="">Like</a>
+        <a href="">Edit</a>
+        <a href="">Delete</a>
+      </div>
+    </div>
+    <hr> -->
+  </section>
+</main>
+<%- include('partials/footer.ejs') %>
